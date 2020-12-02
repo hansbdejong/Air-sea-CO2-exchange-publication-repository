@@ -1,11 +1,15 @@
 # Air-sea-CO2-exchange-publication-repository
 Code from the publication: DeJong, Hans B., and Robert B. Dunbar. "Air‐sea CO2 exchange in the Ross Sea, Antarctica." Journal of Geophysical Research: Oceans 122.10 (2017): 8167-8181. (https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2017JC012853)
 
-## Calculating CO2 Flux rates
+## Calculating CO2 Flux rates (code/co2-flux-rates)
 
+### wind_unpack.m, wind_merge_files.m, ncar_call_number_extract.m, ncar_extract.m, julian_multiplied_4.m
 We obtained in situ pCO2, SST, and salinity underway measurements from the Lamont Doherty Earth Observatory (LDEO) pCO2 database (Takahashi et al., 2009) and continuous shipboard wind speed data (binned by minute) from the Marine Geoscience Data System
-(MGDS, http://www.marine-geo.org). All measurements were made on the R/V Nathaniel B. Palmer (NBP). We included data from 20 cruises in the Ross Sea region (160°E – 155°W, 71°S – 79°S) with concurrent pCO2, SST, salinity, and wind speed measurements (n = 135,772).The shipboard wind speed data, measured at around 25 m height, were corrected for ship motion and adjusted to 10 m height by a factor of 0.91 following Thomas et al. (2005). The following equation was used to calculate instantaneous air-sea CO2 flux without the presence of sea
-ice:
+(MGDS, http://www.marine-geo.org). All measurements were made on the R/V Nathaniel B. Palmer (NBP). We included data from 20 cruises in the Ross Sea region (160°E – 155°W, 71°S – 79°S) with concurrent pCO2, SST, salinity, and wind speed measurements (n = 135,772).The shipboard wind speed data, measured at around 25 m height, were corrected for ship motion and adjusted to 10 m height by a factor of 0.91 following Thomas et al. (2005). 
+
+### calculate_fco2.m, co2flux14.m, and fco2_merge_files.m
+
+The following equation was used to calculate instantaneous air-sea CO2 flux without the presence of sea ice:
 
 <img src="https://render.githubusercontent.com/render/math?math=CO_{2} flux = k K_0 (pCO_2 - pCO_{2atm})">
 
@@ -19,7 +23,18 @@ where U10 is the wind speed at 10 m height and Sc is the temperature dependent S
 
 CO2 flux = CO2 flux (no ice) X (1 - A)
 
-where A is the sea ice concentration. We used daily satellite derived 6.25 km resolution AMSR-E and AMSR-2 sea ice concentration data from the University of Bremen (Spreen et al., 2008). To evaluate the spatial distribution of CO2 fluxes, we binned the instantaneous CO2 flux data into 0.5° latitude by 2° longitude grid cells. We averaged the CO2 flux for each grid cell by month (November–March). To reduce biases by an overrepresented day and/or year, we first averaged all values within each space/month grid cell by day, then year, and then averaged all years together. To estimate monthly CO2 fluxes for the Ross Sea continental shelf (November–March), we averaged all grid cells poleward of the 1,000 m isopleth. The number of grid cells with CO2 flux estimates range from 49 (November) to 119 (February; supporting information Figure S5). Cumulative CO2 fluxes from November through March approximate the annual flux since ~95% of the Ross Sea continental shelf is covered in sea ice during the winter (Arrigo & van Dijken, 2003b).
+where A is the sea ice concentration. 
+
+### sea_ice_call_number_extract.m and sea_ice_extract.m
+
+We used daily satellite derived 6.25 km resolution AMSR-E and AMSR-2 sea ice concentration data from the University of Bremen (Spreen et al., 2008). 
+
+
+
+## Spatial Distribution of CO2 fluxes (code/co2-flux-grid-cells)
+
+### grid_fco2.m, add_fluxes, grid_ice.m, grid_pco2.m, grid_wind_NCEP.m, grid_wind_ship.m
+To evaluate the spatial distribution of CO2 fluxes, we binned the instantaneous CO2 flux data into 0.5° latitude by 2° longitude grid cells. We averaged the CO2 flux for each grid cell by month (November–March). To reduce biases by an overrepresented day and/or year, we first averaged all values within each space/month grid cell by day, then year, and then averaged all years together. To estimate monthly CO2 fluxes for the Ross Sea continental shelf (November–March), we averaged all grid cells poleward of the 1,000 m isopleth. The number of grid cells with CO2 flux estimates range from 49 (November) to 119 (February; supporting information Figure S5). Cumulative CO2 fluxes from November through March approximate the annual flux since ~95% of the Ross Sea continental shelf is covered in sea ice during the winter (Arrigo & van Dijken, 2003b).
 
 ## Uncertainties in Calculating CO2 Flux Rates
 
@@ -37,6 +52,6 @@ grid cell and the associated standard error. These sampled grid cell values were
 We modeled annual CO2 fluxes into TNB for the 2012/2013 season with 3-hourly wind data from an automatic weather station (AWS). The AWS Manuela (AMRC, SSEC, UWMadison) is located on Inexpressible Island at the base of Reeves Glacier along the western edge of TNB. During the TRACERS cruise, shipboard (binned 3-hourly) and AWS wind speed data (scaled by 0.76) tracked each other closely (Figure S1). Since
 winds consistently blow from Reeves Glacier into TNB (Bromwich, 1989), we used scaled AWS Manuela data to represent 10 m height winds in TNB. We also calculated CO2 fluxes into TNB with 6-hourly NCEP/NCAR Reanalysis wind product data (Kalnay et al., 1996]).
 
-For the air-to-sea CO2 flux calculations, we also used 3.125 km resolution AMSR-2 sea ice concentration data from the University of Bremen (Spreen et al., 2008) and weekly 1˚ x 1˚ NOAA Optimum Interpolation Sea Surface Temperature V2 (Reynolds et al., 2002). To estimate the annual pCO2 cycle in TNB, we used the LDEO pCO2 database (1996-2013). There is pCO2 data in TNB only between 21 December and 6 March. We binned the pCO2 data from TNB by Julian date and fit a 2nd order polynomial function. By 6 March, pCO2 in TNB remained low at 231 µatm. DeJong et al. (2017) argue that late summer productivity by frazil ice algae prevents surface pCO2 in TNB from increasing. We assume that pCO2 in TNB remains at 230 µatm through the end of March since frazil ice algae was observed there through March (in true color satellite images). Following Sweeney (2003), we set pCO2 between May and November to 425 µatm. Sweeney (2003)
+For the air-to-sea CO2 flux calculations, we also used 3.125 km resolution AMSR-2 sea ice concentration data from the University of Bremen (Spreen et al., 2008) and weekly 1° x 1° NOAA Optimum Interpolation Sea Surface Temperature V2 (Reynolds et al., 2002). To estimate the annual pCO2 cycle in TNB, we used the LDEO pCO2 database (1996-2013). There is pCO2 data in TNB only between 21 December and 6 March. We binned the pCO2 data from TNB by Julian date and fit a 2nd order polynomial function. By 6 March, pCO2 in TNB remained low at 231 µatm. DeJong et al. (2017) argue that late summer productivity by frazil ice algae prevents surface pCO2 in TNB from increasing. We assume that pCO2 in TNB remains at 230 µatm through the end of March since frazil ice algae was observed there through March (in true color satellite images). Following Sweeney (2003), we set pCO2 between May and November to 425 µatm. Sweeney (2003)
 estimated winter pCO2 in the Ross Sea with deep pCO2 measurements made in the austral spring (1996) from the central Ross Sea. A winter pCO2 estimate of 425 µatm is also consistent with the pCO2 seasonal cycle in the central Ross Sea based on measurements for November through April from the LDEO pCO2 database (1994-2013) (DeJong et al.,2017). We assumed that pCO2 linearly declines between 1 November and 21 December and linearly increases between 31 March and 1 May (Figure S2).
 
