@@ -47,7 +47,7 @@ If a grid cell only had data from 1 day, the average standard deviation of all g
 We used the bootstrap method (Efron & Tibshirani, 1994) to estimate the sampling uncertainty of the monthly CO2 flux rates for the Ross Sea continental shelf. We accounted for both the sampling error within each grid cell as well as the sampling error from the limited spatial coverage of CO2 flux data. For each month, we randomly sampled N (number of grid cells with data for the month) grid cell values with replacement. Each grid cell value was sampled from a normal distribution based on the mean CO2 flux rate for that
 grid cell and the associated standard error. These sampled grid cell values were then averaged to obtain the mean CO2 flux rate for that month for the Ross Sea continental shelf. We repeated this sampling procedure 10000 times and then calculated the standard deviation of the 10000 sampled means. This method was also used to calculate the uncertainty of the monthly mean estimates of pCO2, ship wind speed, NCEP wind speed, and ice cover.
 
-## Calculating Annual CO2 Flux into Terra Nova Bay
+## Calculating Annual CO2 Flux into Terra Nova Bay (code/co2-flux-TNB)
 
 ### calculate_fco2_aws.m, calculate_fco2_ncep.m, co2flux14.m, extract_ship_wind_TNB.m, netcdf_wind_TNB.m 
 We modeled annual CO2 fluxes into TNB for the 2012/2013 season with 3-hourly wind data from an automatic weather station (AWS). The AWS Manuela (AMRC, SSEC, UWMadison) is located on Inexpressible Island at the base of Reeves Glacier along the western edge of TNB. During the TRACERS cruise, shipboard (binned 3-hourly) and AWS wind speed data (scaled by 0.76) tracked each other closely. Since
