@@ -3,13 +3,13 @@ Code from the publication: DeJong, Hans B., and Robert B. Dunbar. "Air‐sea CO2
 
 ## Figures
 **Figure 1.**
-![](readMeFigures/fig1.png)
+![](readMeFigures/sampler1.png)
 
 **Figure 2.** 
-![](readMeFigures/fig2.png)
+![](readMeFigures/sampler2.png)
 
 **Figure 3.**
-![](readMeFigures/fig3.png)
+![](readMeFigures/sampler3.png)
 
 **Figure 4.** 
 ![](readMeFigures/fig4.png)
