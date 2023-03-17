@@ -2,7 +2,12 @@
 Code from the publication: DeJong, Hans B., and Robert B. Dunbar. "Air‐sea CO2 exchange in the Ross Sea, Antarctica." Journal of Geophysical Research: Oceans 122.10 (2017): 8167-8181. (https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2017JC012853)
 
 ## Figures
-![](figures/Fig1.pdf)
+![](readMeFigures/fig1.png)
+![](readMeFigures/fig2.png)
+![](readMeFigures/fig3.png)
+![](readMeFigures/fig4.png)
+![](readMeFigures/fig5.png)
+![](readMeFigures/fig6.png)
 
 ## Calculating CO2 Flux rates (code/co2-flux-rates)
 
